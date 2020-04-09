@@ -1,0 +1,68 @@
+title Search Room Information
+
+actor User
+activate User
+boundary HomePage
+boundary SearchPage
+boundary ResultPage
+boundary RoomPage
+participant ROMS
+participant Database
+
+User->HomePage: select "Search Room"
+activate HomePage
+HomePage->SearchPage: display SearchPage
+deactivate HomePage
+activate SearchPage
+
+alt fill in Date & Building & Room
+	User->SearchPage: search(Date, Building, Room)
+else 
+	User->SearchPage: search(Date, Building)
+end
+SearchPage->ROMS: request Room List
+deactivate SearchPage
+activate ROMS
+ROMS->Database: get data
+activate Database
+ROMS<--Database: data
+deactivate Database
+ResultPage<--ROMS: Room List
+deactivate ROMS
+activate ResultPage
+User<--ResultPage: Room List
+User->ResultPage: select Room
+ResultPage->ROMS: Schedule get_room_schedule (room_id, date)
+deactivate ResultPage
+activate ROMS
+ROMS->Database: get data
+activate Database
+ROMS<--Database: data
+deactivate Database
+RoomPage<--ROMS: Room info
+deactivate ROMS
+activate RoomPage
+User<--RoomPage: Room info
+User->RoomPage: book Room
+RoomPage->ROMS: bool update_room_schedule (room_id, date, Schedule)
+deactivate RoomPage
+activate ROMS
+ROMS->Database: get data
+activate Database
+ROMS<--Database: data
+deactivate Database
+alt true
+RoomPage<--ROMS: book success
+activate RoomPage
+User<--RoomPage: book success
+else 
+RoomPage<--ROMS: book failed
+deactivate ROMS
+User<--RoomPage: book failed
+end
+User->RoomPage: quit search page
+HomePage<--RoomPage: Open Homepage
+deactivate RoomPage
+activate HomePage
+
+

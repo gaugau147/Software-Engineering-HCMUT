@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Search for Courses Page</title>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="search-courses">
+  <!-- Header -->
+  <nav class="navbar navbar-expand-md navbar-light fixed-top py-3">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img src="img/quizverse2.png" width="110" height="60" alt="">
+      </a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="profile.html" class="nav-link"><span><i class="fas fa-user-circle"></i></span> nhanluong</a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html" class="nav-link"><span><i class="fas fa-sign-out-alt"></i></span> Log Out</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn"></button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page body -->
+  <br>
+  <div class="container" id="search-courses-container">
+    <div class="row">
+      <!-- Search side box -->
+      <div class="col-lg-4">
+        <h3>Search courses</h3>
+        <div class="form-group">
+          <label for="courseID">Course ID</label>
+          <input type="text" id="courseID" class="form-control form-control-sm" placeholder="Enter course ID">
+        </div>
+        <div class="form-group">
+          <label for="courseName">Course Name</label>
+          <input type="text" id="courseName" class="form-control form-control-sm" placeholder="Enter course name">
+        </div>
+        <div class="form-group">
+          <label for="authorName">Author Name</label>
+          <input type="text" id="authorName" class="form-control form-control-sm" placeholder="Diep Tran">
+        </div>
+        <button class="btn btn-info">Search</button>
+      </div>
+      <!-- Contents -->
+      <div class="col-lg-8">
+        <!-- Result section -->
+        <h3>Results</h3>
+        <a href="math-modelling.html" class="list-group-item list-group-item-action flex-column align-items-start a-gr">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">CO2011 - Mathematical Modelling</h5>
+            <small>73 questions</small>
+          </div>
+          <small class="text-muted">Author: <object><a href="Diep-author.html">Diep Tran</a></object></small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start a-gr">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">CO4027 - Machine Learning</h5>
+            <small>98 questions</small>
+          </div>
+          <small class="text-muted">Author: <object><a href="Diep-author.html">Diep Tran</a></object></small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start a-gr">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">CO3057 - Computer Vision</h5>
+            <small>161 questions</small>
+          </div>
+          <small class="text-muted">Author: <object><a href="Diep-author.html">Diep Tran</a></object></small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start a-gr">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">CO3058 - Natural Languages Processing</h5>
+            <small>114 questions</small>
+          </div>
+          <small class="text-muted">Author: <object><a href="Diep-author.html">Diep Tran</a></object></small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start a-gr">
+          <div class="d-flex justify-content-between">
+            <h5 class="mb-1">CO3027 - Ecommerce</h5>
+            <small>307 questions</small>
+          </div>
+          <small class="text-muted">Author: <object><a href="Diep-author.html">Diep Tran</a></object></small>
+        </a>
+      </div>
+    </div>
+    <br>
+  </div>
+
+
+
+  <footer id="main-footer" class="py-5 text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto">
+          <div class="d-flex flex-column row-hl">
+            <div class="item-hl p-2">
+              <h1>Have a Questions?</h1>
+            </div>
+            <div class="item-hl p-2">
+              <span><i class="fas fa-envelope"></i></span>
+              <span> quizverse@hcmut.edu.vn</span>
+            </div>
+            <div class="item-hl p-2">
+              <span><i class="fas fa-phone"></i></span>
+              <span> 028 01642284289</span>
+            </div>
+            <div class="item-hl p-2">
+              <span><i class="far fa-compass"></i></span>
+              <span> 268 Ly Thuong Kiet, District 10, Ho Chi Minh City, Viet Nam</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 ml-auto text-center">
+          <div class="d-flex flex-column row-hl">
+            <div class="item-hl">
+              <img src="img/quizverse-white.png" width="110" height="110" alt="">
+            </div>
+            <div class="item-hl p-2">
+              <p class="text-light">Copyright &copy; 2019 QuizVerse designed by Nhan and Diep</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/b0724393dc.js" crossorigin="anonymous"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/navbar-fixed.js"></script>
+</body>
+
+</html>

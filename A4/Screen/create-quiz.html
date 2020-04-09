@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Create Manually</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/15.0.0/inline/ckeditor.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body id="create-manually-body">
+
+    <!-- NAV-BAR -->
+    <nav class="navbar navbar-expand-md navbar-light fixed-top py-3">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <img src="img/quizverse2.png" width="110" height="60" alt="">
+            </a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link"><span><i class="fas fa-home"></i></span> Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- LOCATION -->
+    <div class="container py-3">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- breadcrumb for navigating -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="profile.html">nhanluong</a></li>
+                        <li class="breadcrumb-item"><a href="profile.html">General Courses</a></li>
+                        <li class="breadcrumb-item"><a href="manage-course-discrete-math.html">CO1007 - Discrete
+                                Mathematics</a></li>
+                        <li class="breadcrumb-item"><a href="DM-chap1-view.html">Chapter 1 - Predicate Logic</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Create Quiz</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-lg-4">
+                <a href="DM-chap1-view.html" class="btn" id="btn-back">Back</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="title">
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="border-bottom">Create Quiz</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- CREATE SECTION -->
+    <div class="container pt-5 pb-3 container-create-manually border-bottom">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="detail-tab" data-toggle="tab" href="#home" role="tab"
+                    aria-controls="home" aria-selected="true">Detail</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="question-tab" data-toggle="tab" href="#profile" role="tab"
+                    aria-controls="profile" aria-selected="false">Question</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="detail-tab">
+                <div class="container">
+                    <div class="row my-3">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="quiz-title">Quiz title:</label>
+                                <input type="text" class="form-control" id="quiz-title" placeholder=". . . ">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row my-3">
+                        <div class="col-md-10">
+                            <label for="summernote">Quiz describtion:</label>
+                            <div id="summernote"></div>
+                            <script>
+                                $('#summernote').summernote({
+                                    placeholder: '. . .',
+                                    tabsize: 2,
+                                    height: 100
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class="row py-3 justify-content-start">
+                        <div class="col-md-10">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="datepicker">Date:</label>
+                                    <input id="datepicker" width="276" />
+                                    <script>
+                                        $('#datepicker').datepicker({
+                                            uiLibrary: 'bootstrap4'
+                                        });
+                                    </script>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="timepicker">Time:</label>
+                                    <input id="timepicker" width="276" />
+                                    <script>
+                                        $('#timepicker').timepicker({
+                                            uiLibrary: 'bootstrap4'
+                                        });
+                                    </script>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="duration">Duration:</label>
+                                    <input type="text" class="form-control" id="duration" placeholder="min(s)">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="class">Class:</label>
+                                        <input type="text" class="form-control" id="class" placeholder=". . . ">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <label for="group">Group:</label>
+                                        <input type="text" class="form-control" id="group" placeholder=". . . ">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <label for="notes">Notes:</label>
+                                    <textarea name="" id="notes" cols="7" rows="3" class="form-control"
+                                        placeholder=". . . "></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="question-tab">
+                <div class="container">
+                    <br><br>
+                    <div class="container border py-3">
+                        <form class="form-info">
+                            <div class="form-group question-title">
+                                <div id="question-title">
+                                    <p><strong>Question Title</strong></p>
+                                </div>
+                                <script>
+                                    InlineEditor
+                                        .create(document.querySelector('#question-title'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
+                            </div>
+                            <div class="form-check py-3">
+                                <input class="form-check-input form-check-input-option" name="ans" type="radio"
+                                    value="a" id="opt-1">
+                                <div id="ans-1">
+                                    <p>Option 1</p>
+                                </div>
+                                <script>
+                                    InlineEditor
+                                        .create(document.querySelector('#ans-1'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
+                            </div>
+                            <div class="form-check py-3">
+                                <input class="form-check-input form-check-input-option" name="ans" type="radio"
+                                    value="b" id="opt-2">
+                                <div id="ans-2">
+                                    <p>Option 2</p>
+                                </div>
+                                <script>
+                                    InlineEditor
+                                        .create(document.querySelector('#ans-2'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
+                            </div>
+                            <div class="form-check py-3 ans-3">
+                                <input class="form-check-input form-check-input-option" name="ans" type="radio"
+                                    value="c" id="opt-3">
+                                <div id="ans-3">
+                                    <p>Option 3</p>
+                                </div>
+                                <script>
+                                    InlineEditor
+                                        .create(document.querySelector('#ans-3'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
+                            </div>
+                            <div class="form-check py-3 ">
+                                <input class="form-check-input form-check-input-option" name="ans" type="radio"
+                                    value="d" id="opt-4">
+                                <div id="ans-4">
+                                    <p>Option 4</p>
+                                </div>
+                                <script>
+                                    InlineEditor
+                                        .create(document.querySelector('#ans-4'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
+                            </div>
+                            <div class="form-check py-3 ">
+                                <input class="form-check-input form-check-input-option" name="ans" type="radio"
+                                    value="d" id="opt-5">
+                                <div id="ans-5">
+                                    <p>Option 5</p>
+                                </div>
+                                <script>
+                                    InlineEditor
+                                        .create(document.querySelector('#ans-5'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
+                            </div>
+
+                            <br>
+                            <div class="row mb-3 justify-content-end">
+                                <div class="col-xs-4 py-2 px-2">
+                                    <select id="question-type" class="form-control" onchange="questiontype()">
+                                        <option value="1" selected>Multiple Choice</option>
+                                        <option value="2">Checkbox</option>
+                                    </select>
+                                    <script>
+                                        function questiontype() {
+                                            var qtype = document.getElementById("question-type").value;
+                                            var boxes1 = document.getElementById("opt-1");
+                                            var boxes2 = document.getElementById("opt-2");
+                                            var boxes3 = document.getElementById("opt-3");
+                                            var boxes4 = document.getElementById("opt-4");
+                                            var boxes5 = document.getElementById("opt-5");
+                                            if ("2" == qtype) {
+                                                boxes1.type = 'checkbox';
+                                                boxes2.type = 'checkbox';
+                                                boxes3.type = 'checkbox';
+                                                boxes4.type = 'checkbox';
+                                                boxes5.type = 'checkbox';
+                                            } else {
+                                                boxes1.type = 'radio';
+                                                boxes2.type = 'radio';
+                                                boxes3.type = 'radio';
+                                                boxes4.type = 'radio';
+                                                boxes5.type = 'radio';
+                                            }
+                                        }
+                                    </script>
+                                </div>
+                                <div class="col-xs-4 py-2 px-2">
+                                    <button id="submit" class="btn btn-info " type="submit">Add</button>
+                                </div>
+                                <div class="col-xs-4 py-2 px-2">
+                                    <a href="DM-chap1-view.html" id="cancel" class="btn btn-danger ">Cancel</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div><br>
+                    <div class="container border py-3">
+                        <form class="form-info">
+                            <div class="form-group question-title">
+                                <div id="question-title">
+                                    <p><strong>Question Title</strong></p>
+                                </div>
+                                <script>
+                                    InlineEditor
+                                        .create(document.querySelector('#question-title'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
+                            </div>
+                            <div class="form-check py-3">
+                                <input class="form-check-input form-check-input-option" name="ans" type="radio"
+                                    value="a" id="opt-1">
+                                <div id="ans-1">
+                                    <p>Option 1</p>
+                                </div>
+                                <script>
+                                    InlineEditor
+                                        .create(document.querySelector('#ans-1'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
+                            </div>
+                            <div class="form-check py-3">
+                                <input class="form-check-input form-check-input-option" name="ans" type="radio"
+                                    value="b" id="opt-2">
+                                <div id="ans-2">
+                                    <p>Option 2</p>
+                                </div>
+                                <script>
+                                    InlineEditor
+                                        .create(document.querySelector('#ans-2'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
+                            </div>
+                            <div class="form-check py-3 ans-3">
+                                <input class="form-check-input form-check-input-option" name="ans" type="radio"
+                                    value="c" id="opt-3">
+                                <div id="ans-3">
+                                    <p>Option 3</p>
+                                </div>
+                                <script>
+                                    InlineEditor
+                                        .create(document.querySelector('#ans-3'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
+                            </div>
+                            <div class="form-check py-3 ">
+                                <input class="form-check-input form-check-input-option" name="ans" type="radio"
+                                    value="d" id="opt-4">
+                                <div id="ans-4">
+                                    <p>Option 4</p>
+                                </div>
+                                <script>
+                                    InlineEditor
+                                        .create(document.querySelector('#ans-4'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
+                            </div>
+                            <div class="form-check py-3 ">
+                                <input class="form-check-input form-check-input-option" name="ans" type="radio"
+                                    value="d" id="opt-5">
+                                <div id="ans-5">
+                                    <p>Option 5</p>
+                                </div>
+                                <script>
+                                    InlineEditor
+                                        .create(document.querySelector('#ans-5'))
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
+                            </div>
+
+                            <br>
+                            <div class="row mb-3 justify-content-end">
+                                <div class="col-xs-4 py-2 px-2">
+                                    <select id="question-type" class="form-control" onchange="questiontype()">
+                                        <option value="1" selected>Multiple Choice</option>
+                                        <option value="2">Checkbox</option>
+                                    </select>
+                                    <script>
+                                        function questiontype() {
+                                            var qtype = document.getElementById("question-type").value;
+                                            var boxes1 = document.getElementById("opt-1");
+                                            var boxes2 = document.getElementById("opt-2");
+                                            var boxes3 = document.getElementById("opt-3");
+                                            var boxes4 = document.getElementById("opt-4");
+                                            var boxes5 = document.getElementById("opt-5");
+                                            if ("2" == qtype) {
+                                                boxes1.type = 'checkbox';
+                                                boxes2.type = 'checkbox';
+                                                boxes3.type = 'checkbox';
+                                                boxes4.type = 'checkbox';
+                                                boxes5.type = 'checkbox';
+                                            } else {
+                                                boxes1.type = 'radio';
+                                                boxes2.type = 'radio';
+                                                boxes3.type = 'radio';
+                                                boxes4.type = 'radio';
+                                                boxes5.type = 'radio';
+                                            }
+                                        }
+                                    </script>
+                                </div>
+                                <div class="col-xs-4 py-2 px-2">
+                                    <button id="submit" class="btn btn-info " type="submit">Add</button>
+                                </div>
+                                <div class="col-xs-4 py-2 px-2">
+                                    <a href="DM-chap1-view.html" id="cancel" class="btn btn-danger ">Cancel</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="row py-3 justify-content-center">
+                        <div class="col-md-3 py-3">
+                            <button type="button" class="btn btn-outline-secondary" id="btn-new-question"><span><i
+                                        class="fas fa-plus"></i></span>
+                                New
+                                Question</button>
+                        </div>
+                        <script>
+
+                        </script>
+                        <div class="col-md-3 py-3">
+                            <!-- button trigger find question modal -->
+                            <button class="btn btn-outline-secondary" type="button" data-toggle="modal"
+                                data-target="#exampleModal">
+                                <span><i class="fas fa-search"></i></span> Find Question
+                            </button>
+                            <!-- modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Find Quiz Question</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-3">
+                                                    <div class="nav flex-column nav-pills" id="v-pills-tab"
+                                                        role="tablist" aria-orientation="vertical">
+                                                        <a class="nav-link active" id="v-pills-chap1-tab"
+                                                            data-toggle="pill" href="#v-pills-chap1" role="tab"
+                                                            aria-controls="v-pills-chap1" aria-selected="true">Chap
+                                                            1</a>
+                                                        <a class="nav-link" id="v-pills-chap2-tab" data-toggle="pill"
+                                                            href="#v-pills-chap2" role="tab"
+                                                            aria-controls="v-pills-chap2" aria-selected="false">Chap
+                                                            2</a>
+                                                        <a class="nav-link" id="v-pills-chap3-tab" data-toggle="pill"
+                                                            href="#v-pills-chap3" role="tab"
+                                                            aria-controls="v-pills-chap3" aria-selected="false">Chap
+                                                            3</a>
+                                                        <a class="nav-link" id="v-pills-chap4-tab" data-toggle="pill"
+                                                            href="#v-pills-chap4" role="tab"
+                                                            aria-controls="v-pills-chap4" aria-selected="false">Chap
+                                                            4</a>
+                                                        <a class="nav-link" id="v-pills-chap5-tab" data-toggle="pill"
+                                                            href="#v-pills-chap5" role="tab"
+                                                            aria-controls="v-pills-chap5" aria-selected="false">Chap
+                                                            5</a>
+                                                        <a class="nav-link" id="v-pills-chap6-tab" data-toggle="pill"
+                                                            href="#v-pills-chap6" role="tab"
+                                                            aria-controls="v-pills-chap6" aria-selected="false">Chap
+                                                            6</a>
+                                                    </div>
+                                                </div>
+                                                <div class="col-9">
+                                                    <div class="tab-content" id="v-pills-tabContent">
+                                                        <div class="tab-pane fade show active" id="v-pills-chap1"
+                                                            role="tabpanel" aria-labelledby="v-pills-chap1-tab">
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        value="">Question 1
+                                                                </label>
+                                                            </div>
+                                                            <p>The repeating decimal...</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 2
+                                                                </label>
+                                                            </div>
+                                                            <p>Which of the following statements...</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 3
+                                                                </label>
+                                                            </div>
+                                                            <p>Let L be the least common ... </p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 4
+                                                                </label>
+                                                            </div>
+                                                            <p>Let S = {0,1,2,3,4,5,6,7,8,9}. ... </p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 5
+                                                                </label>
+                                                            </div>
+                                                            <p>What is the smallest N > 0 ...</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 6
+                                                                </label>
+                                                            </div>
+                                                            <p>What is the largest N > 0 ...</p>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="v-pills-chap2" role="tabpanel"
+                                                            aria-labelledby="v-pills-chap2-tab">
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        value="">Question 1
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 2
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 3
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 4
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 5
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 6
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="v-pills-chap3" role="tabpanel"
+                                                            aria-labelledby="v-pills-chap3-tab">
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        value="">Question 1
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 2
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 3
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 4
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 5
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 6
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                        </div>
+                                                        <div class="tab-pane fade" id="v-pills-chap4" role="tabpanel"
+                                                            aria-labelledby="v-pills-chap4-tab">
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" class="form-check-input"
+                                                                        value="">Question 1
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 2
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 3
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 4
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 5
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox"
+                                                                        class="form-check-input checkbox" name="check[]"
+                                                                        value="">Question 6
+                                                                </label>
+                                                            </div>
+                                                            <p>Lorem ipsum dolor sit amet.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-info">Add Selected Question</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br><br><br><br>
+
+    <div class="container py-2">
+        <div class="row justify-content-start">
+            <div class="col-md-2 py-3">
+                <button class="btn btn-lg btn-info">Save</button>
+            </div>
+            <div class="col-md-2 py-3">
+                <button class="btn btn-lg btn-danger">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER
+    <footer id="login-footer" class="text-white">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <img src="img/quizverse-white.png" width="110" height="110" alt="">
+                </div>
+                <div class="col-md-6 align-self-center">
+                    <p class="mb-0">Copyright &copy; 2019 QuizVerse designed by Nhan and Diep</p>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+
+
+    <script src="https://kit.fontawesome.com/b0724393dc.js" crossorigin="anonymous"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/navbar-fixed.js"></script>
+</body>
+
+</html>

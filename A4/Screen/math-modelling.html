@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mathematical Modelling Page</title>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!--REMEMBER TO INCLUDE JQUERY!!!!!!!!!!! -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body id="math-modelling">
+  <!-- Header -->
+  <nav class="navbar navbar-expand-md navbar-light fixed-top py-3">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img src="img/quizverse2.png" width="110" height="60" alt="">
+      </a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a href="profile.html" class="nav-link"><span><i class="fas fa-user-circle"></i></span> nhanluong</a>
+              </li>
+              <li class="nav-item">
+                <a href="index.html" class="nav-link"><span><i class="fas fa-sign-out-alt"></i></span> Log Out</a>
+              </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page body -->
+  <br>
+  <div class="container" id="math-modelling-container">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- breadcrumb for navigating -->
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="Diep-author.html">dieptran</a></li>
+            <li class="breadcrumb-item"><a href="Diep-author.html">Public Courses</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Mathematical Modelling</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col-lg-4">
+        <button class="btn btn-info" data-toggle="modal" data-target="#pull-request">Pull Request</button>
+      </div>
+    </div>
+    <br>
+    <!-- Topics list -->
+    <h3>Topics</h3>
+    <div class="list-group">
+      <a class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="tooltip" title="Become a contributor to view contents">
+        <div class="d-flex justify-content-between">
+          <h5 class="mb-1">Chapter 1 - Predicate Logic</h5>
+          <small>15 questions</small>
+        </div>
+      </a>
+      <a class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="tooltip" title="Become a contributor to view contents">
+        <div class="d-flex justify-content-between">
+          <h5 class="mb-1">Chapter 2 - Program Verification</h5>
+          <small>27 questions</small>
+        </div>
+      </a>
+      <a class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="tooltip" title="Become a contributor to view contents">
+        <div class="d-flex justify-content-between">
+          <h5 class="mb-1">Chapter 3 - Automata</h5>
+          <small>17 questions</small>
+        </div>
+      </a>
+      <a class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="tooltip" title="Become a contributor to view contents">
+        <div class="d-flex justify-content-between">
+          <h5 class="mb-1">Chapter 4 - Integer Linear Programming</h5>
+          <small>15 questions</small>
+        </div>
+      </a>
+      <a class="list-group-item list-group-item-action flex-column align-items-start" data-toggle="tooltip" title="Become a contributor to view contents">
+        <div class="d-flex justify-content-between">
+          <h5 class="mb-1">Chapter 5 - Dynamical System</h5>
+          <small>35 questions</small>
+        </div>
+      </a>
+    </div>
+    <div id="pull-request" class="modal" style="display: none;" aria-hidden:"true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Request to be a contributor</h5>
+            <button class="close" data-dismiss="modal">x</button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="message">Write Diep a message</label>
+              <input type="text" class="form-control" placeholder="Write a message (optional)">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-info btn-cancel" data-dismiss="modal">Cancel</button>
+            <button class="btn btn-info btn-send" data-dismiss="modal">Send Request</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <footer id="main-footer" class="py-5 text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto">
+          <div class="d-flex flex-column row-hl">
+            <div class="item-hl p-2">
+              <h1>Have a Questions?</h1>
+            </div>
+            <div class="item-hl p-2">
+              <span><i class="fas fa-envelope"></i></span>
+              <span> quizverse@hcmut.edu.vn</span>
+            </div>
+            <div class="item-hl p-2">
+              <span><i class="fas fa-phone"></i></span>
+              <span> 028 01642284289</span>
+            </div>
+            <div class="item-hl p-2">
+              <span><i class="far fa-compass"></i></span>
+              <span> 268 Ly Thuong Kiet, District 10, Ho Chi Minh City, Viet Nam</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 ml-auto text-center">
+          <div class="d-flex flex-column row-hl">
+            <div class="item-hl">
+              <img src="img/quizverse-white.png" width="110" height="110" alt="">
+            </div>
+            <div class="item-hl p-2">
+              <p class="text-light">Copyright &copy; 2019 QuizVerse designed by Nhan and Diep</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    $(document).ready(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+  <script src="https://kit.fontawesome.com/b0724393dc.js" crossorigin="anonymous"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/navbar-fixed.js"></script>
+</body>
+
+</html>

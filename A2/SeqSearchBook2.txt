@@ -1,0 +1,113 @@
+title Search Room for Booking
+
+actor User
+activate User
+boundary HomePage
+boundary SearchPage
+boundary ResultPage
+boundary RoomPage
+boundary BookingPage
+participant ROMS
+participant UserSystem
+participant Database
+
+
+User->HomePage: select "Search Room"
+activate HomePage
+HomePage->SearchPage: display SearchPage
+deactivate HomePage
+activate SearchPage
+
+alt fill in Date & Building & Room
+	User->SearchPage: search(date, Building_id, Room_id)
+else 
+	User->SearchPage: search(date, Building_id)
+end
+SearchPage->ROMS: request Room List
+deactivate SearchPage
+activate ROMS
+ROMS->Database: get data
+activate Database
+ROMS<--Database: data
+deactivate Database
+ResultPage<--ROMS: Room List
+deactivate ROMS
+activate ResultPage
+User<--ResultPage: Room List
+opt Room(s) available
+  User->ResultPage: select Room
+  ResultPage->ROMS: get_room_schedule (Room_id, date)
+  deactivate ResultPage
+  activate ROMS
+  ROMS->Database: get data
+  activate Database
+  ROMS<--Database: data
+  deactivate Database
+  RoomPage<--ROMS: Room info
+  deactivate ROMS
+  activate RoomPage
+  User<--RoomPage: Room info
+  opt Room date available
+
+  	User->RoomPage: select "Book"
+    RoomPage->BookingPage: Open
+    deactivate RoomPage
+    activate BookingPage
+      opt Room time available
+  	User->BookingPage: select time
+    alt lecturer
+    	BookingPage->UserSystem: get classes
+        activate UserSystem
+        UserSystem->Database: get data
+        activate Database
+    	UserSystem<--Database: data
+        deactivate Database
+        BookingPage<--UserSystem: return classes
+        deactivate UserSystem
+        User<--BookingPage: classes
+        User->BookingPage: select class/other
+        opt Other purpose
+        	User->BookingPage: enter information
+        end
+    else Office Staff
+    	User->BookingPage: enter event information
+    end
+    User->BookingPage: confirm
+    BookingPage->ROMS: update_room_schedule (room_id, date, Schedule)
+    deactivate BookingPage
+    activate ROMS
+    ROMS->Database: get data
+    activate Database
+    ROMS<--Database: data
+    deactivate Database
+    alt book success
+      ROMS->EmailSystem: sendEmail()
+activate EmailSystem
+ROMS<--EmailSystem: success
+deactivate EmailSystem
+      BookingPage<--ROMS: book success
+      activate BookingPage
+      User<--BookingPage: book success
+    else 
+      BookingPage<--ROMS: book failed
+      deactivate ROMS
+      User<--BookingPage: book failed
+    end
+    end
+    User->BookingPage: quit Booking Page
+    RoomPage<--BookingPage:Open RoomPage
+    activate RoomPage
+    deactivate BookingPage
+	end
+  User->RoomPage: quit RoomPage
+  ResultPage<--RoomPage: Open ResultPage
+  deactivate RoomPage
+  activate ResultPage
+
+end
+User->ResultPage: quit ResultPage
+SearchPage<--ResultPage: Open SearchPage
+deactivate ResultPage
+activate SearchPage
+
+

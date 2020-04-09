@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Add New Course Page</title>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+  integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <!--REMEMBER TO INCLUDE JQUERY!!!!!!!!!!! -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+
+</head>
+
+<body id="add-new-course">
+  <!-- Header -->
+  <nav class="navbar navbar-expand-md navbar-light fixed-top py-3">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img src="img/quizverse2.png" width="110" height="60" alt="">
+      </a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="profile.html" class="nav-link"><span><i class="fas fa-user-circle"></i></span> nhanluong</a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html" class="nav-link"><span><i class="fas fa-sign-out-alt"></i></span> Log Out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page body -->
+  <br>
+  <div class="container" id="add-new-course-container">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- breadcrumb for navigating -->
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="profile.html">nhanluong</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add New Course</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col-lg-4">
+        <a href="profile.html" class="btn btn-info">Back to dashboard</a>
+      </div>
+    </div>
+
+    <!-- Add new course -->
+    <h1 class="text-center py-3"><strong>Add New Course</strong></h1>
+    <br>
+    <form class="form-info">
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="course-Id">Course ID</label>
+            <input type="text" class="form-control" id="course-Id" placeholder="Course ID" required>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="form-group">
+            <label for="course-name">Course Name</label>
+            <input type="text" class="form-control" id="course-name" placeholder="Course Name" required>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="privacy-option">Privacy Option</label>
+            <select class="form-control" id="privacy-option" required>
+              <option value="">Please select</option>
+              <option value="1">Public</option>
+              <option value="2">Private</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="form-group">
+            <label for="contributors">Add Contributors</label>
+            <input type="text" class="form-control" id="contributors" placeholder="@contributor">
+          </div>
+        </div>
+      </div>
+      <div class="input-group control-group after-add-more">
+        <input type="text" name="addmore[]" class="form-control" placeholder="Topic">
+        <div class="input-group-btn">
+          <button class="btn btn-info add-more" type="button">
+            <i class="glyphicon glyphicon-plus"></i>
+            Add Topic
+          </button>
+        </div>
+      </div>
+      <!-- copy field -->
+      <div class="copy hide" style="display:none;">
+        <div class="control-group input-group" style="margin-top:20px">
+          <input type="text" name="addmore[]" class="form-control" placeholder="Topic">
+          <div class="input-group-btn">
+            <button class="btn btn-info remove" type="button">
+              <i class="glyphicon glyphicon-remove"></i>
+              Remove Topic
+            </button>
+          </div>
+        </div>
+      </div>
+      <br><br><br>
+      <div class="row mb-3 justify-content-around">
+        <div class="col-xs-6">
+          <button id="reset" class="btn btn-md btn-reset" type="reset">Reset</button>
+        </div>
+        <div class="col-xs-6">
+          <button id="submit" class="btn btn-md" type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+    <br><br><br>
+
+  </div>
+  <br>
+  <footer id="main-footer" class="py-5 text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto">
+          <div class="d-flex flex-column row-hl">
+            <div class="item-hl p-2">
+              <h1>Have a Questions?</h1>
+            </div>
+            <div class="item-hl p-2">
+              <span><i class="fas fa-envelope"></i></span>
+              <span> quizverse@hcmut.edu.vn</span>
+            </div>
+            <div class="item-hl p-2">
+              <span><i class="fas fa-phone"></i></span>
+              <span> 028 01642284289</span>
+            </div>
+            <div class="item-hl p-2">
+              <span><i class="far fa-compass"></i></span>
+              <span> 268 Ly Thuong Kiet, District 10, Ho Chi Minh City, Viet Nam</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 ml-auto text-center">
+          <div class="d-flex flex-column row-hl">
+            <div class="item-hl">
+              <img src="img/quizverse-white.png" width="110" height="110" alt="">
+            </div>
+            <div class="item-hl p-2">
+              <p class="text-light">Copyright &copy; 2019 QuizVerse designed by Nhan and Diep</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    $(document).ready(function () {
+      $(".add-more").click(function () {
+        var html = $(".copy").html();
+        $(".after-add-more").after(html);
+      });
+      $("body").on("click", ".remove", function () {
+        $(this).parents(".control-group").remove();
+      });
+    });
+  </script>
+
+  <script src="https://kit.fontawesome.com/b0724393dc.js" crossorigin="anonymous"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/navbar-fixed.js"></script>
+</body>
+
+</html>

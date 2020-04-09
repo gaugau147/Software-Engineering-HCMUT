@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Search Question Page</title>
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+  integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <!--REMEMBER TO INCLUDE JQUERY!!!!!!!!!!! -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body id="search-question">
+  <!-- Header -->
+  <nav class="navbar navbar-expand-md navbar-light fixed-top py-3">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img src="img/quizverse2.png" width="110" height="60" alt="">
+      </a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a href="profile.html" class="nav-link"><span><i class="fas fa-user-circle"></i></span> nhanluong</a>
+          </li>
+          <li class="nav-item">
+            <a href="index.html" class="nav-link"><span><i class="fas fa-sign-out-alt"></i></span> Log Out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page body -->
+  <br>
+  <div class="container" id="search-question-container">
+    <div class="row">
+      <!-- Left panel -->
+      <div class="col-lg-4 search-box">
+        <div class="sticky-top">
+          <h3>Search questions</h3>
+          <div class="form-group">
+            <label for="courseID">Course ID</label>
+            <input type="text" id="courseID" class="form-control form-control-sm" placeholder="CO1007">
+          </div>
+          <div class="form-group">
+            <label for="courseName">Course Name</label>
+            <input type="text" id="courseName" class="form-control form-control-sm" placeholder="Discrete Mathematics">
+          </div>
+          <div class="form-group">
+            <label for="topic">Topic</label>
+            <input type="text" id="topic" class="form-control form-control-sm" placeholder="Enter topic">
+          </div>
+          <div class="form-group">
+            <label for="tag">Tag</label>
+            <input type="text" id="tag" class="form-control form-control-sm" placeholder="@tag">
+          </div>
+          <div class="form-group">
+            <label>Question hard level</label>
+            <select class="form-control" id="level">
+              <option value="">Please select</option>
+              <option value="1">Easy</option>
+              <option value="2">Medium</option>
+              <option value="3">Hard</option>
+              <option value="4">Mind Blowing</option>
+            </select>
+          </div>
+          <a href="add-new-question.html" class="btn btn-info btn-add">Add Questions</a>
+          <button class="btn btn-info ">Search</button>
+        </div>
+      </div>
+
+      <div class="col-lg-8">
+
+        <div class="row" id="sort-bar">
+          <div class="col-sm-4 col-1 d-lg-block d-none">
+            <a class="sort-bar-header">
+              <span>
+                <h6>Sort:</h6>
+              </span>
+            </a>
+          </div>
+          <div class="col-sm-4 col-2 d-lg-block d-none">
+            <a href="#" id="sort-date" onclick="changedate()">
+              <div class="row">
+                <div class="col-sm-8">
+                  <h6>Date modified</h6>
+                </div>
+                <div class="col-sm-4">
+                  <span>
+                    <i id="date-icon" class="fas fa-caret-down"></i>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-sm-4 col-3 d-lg-block d-none">
+            <a href="#" id="sort-level" onclick="changelevel()">
+              <div class="row">
+                <div class="col-sm-8">
+                  <h6>Hard level</h6>
+                </div>
+                <div class="col-sm-4">
+                  <span>
+                    <i id="level-icon" class="fas fa-caret-down"></i>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- List of questions -->
+        <div class="row" id="question-content">
+          <div class="list-group">
+            <a class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex justify-content-between">
+                <h6 class="mb-1">The repeating decimal number 3.14159265265265... written as a ratio of two integers a/b is</h6>
+              </div>
+              <p class="mb-1">
+                A. 313845111/99990000<br>
+                B. 313844841/99900000<br>
+                C. 13845006/99990000<br>
+                <strong>D. 13845106/99900000<br></strong>
+                E. 13845123/99000000<br>
+              </p>
+              <br>
+              <button class="btn btn-sm btn-e"><i class="far fa-edit"></i><span> </span>Edit</button>
+              <button class="btn btn-sm btn-d"><i class="far fa-minus-square"></i><span> </span>Delete</button>
+              <small class="text-muted">Hard | Last modified: 21:30 11/02/2019</small>
+            </a>
+            <a class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex justify-content-between">
+                <h6 class="mb-1">Which of the following statements is true:</h6>
+              </div>
+              <p class="mb-1">
+                A. A number is rational if and only if its square is rational<br>
+                B. An integern is odd if and only if n2+ 2 nis odd<br>
+                C. A number is irrational if and only if its square is irrational<br>
+                <strong>D. A numbernis odd if and only ifn(n+ 1) is eve<br></strong>
+                E. At least one of two numbersxandyis irrational if and only if the productxyisirrational<br>
+              </p>
+              <br>
+              <button class="btn btn-sm btn-e"><i class="far fa-edit"></i><span> </span>Edit</button>
+              <button class="btn btn-sm btn-d"><i class="far fa-minus-square"></i><span> </span>Delete</button>
+              <small class="text-muted">Easy | Last modified: 21:31 11/02/2019</small>
+            </a>
+            <a class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex justify-content-between">
+                <h6 class="mb-1">Let L be the least common multiple of 175 and 105. Among all of the common divisors x > 1 of 175 and 105, let D be the smallest. Which is correct of the following:</h6>
+              </div>
+              <p class="mb-1">
+                A. D = 5 and L= 1050<br>
+                B. D = 5 and L= 35<br>
+                C. D = 7 and L= 525<br>
+                <strong>D. D = 5 and L= 52<br></strong>
+                E. D = 7 and L= 1050<br>
+              </p>
+              <br>
+              <button class="btn btn-sm btn-e"><i class="far fa-edit"></i><span> </span>Edit</button>
+              <button class="btn btn-sm btn-d"><i class="far fa-minus-square"></i><span> </span>Delete</button>
+              <small class="text-muted">Mind Blowing | Last modified: 21:34 11/02/2019</small>
+            </a>
+            <a class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex justify-content-between">
+                <h6 class="mb-1">Let S = {0,1,2,3,4,5,6,7,8,9}. What is the smallest integer K such that any subset of S of size K contains two disjoint subsets of size two, {x1, x2} and {y1, y2}, such that x1 + x2 = y1 + y2 = 9?</h6>
+              </div>
+              <p class="mb-1">
+                A. 8<br>
+                B. 9<br>
+                C. 7<br>
+                D. 6<br>
+                <strong>E. 5</strong><br>
+              </p>
+              <br>
+              <button class="btn btn-sm btn-e"><i class="far fa-edit"></i><span> </span>Edit</button>
+              <button class="btn btn-sm btn-d"><i class="far fa-minus-square"></i><span> </span>Delete</button>
+              <small class="text-muted">Medium | Last modified: 21:50 11/02/2019</small>
+            </a>
+            <a class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex justify-content-between">
+                <h6 class="mb-1">What is the smallest N > 0 such that any set of N nonnegative integers must have two distinct integers whose sum or difference is divisible by 1000?</h6>
+              </div>
+              <p class="mb-1">
+                <strong>A. 502<br></strong>
+                B. 520<br>
+                C. 5002<br>
+                D. 5020<br>
+                E. 52002<br>
+              </p>
+              <br>
+              <button class="btn btn-sm btn-e"><i class="far fa-edit"></i><span> </span>Edit</button>
+              <button class="btn btn-sm btn-d"><i class="far fa-minus-square"></i><span> </span>Delete</button>
+              <small class="text-muted">Easy | Last modified: 21:00 11/02/2019</small>
+            </a>
+
+
+
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+
+  </div>
+  <br>
+  <footer id="main-footer" class="py-5 text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 ml-auto">
+          <div class="d-flex flex-column row-hl">
+            <div class="item-hl p-2">
+              <h1>Have a Questions?</h1>
+            </div>
+            <div class="item-hl p-2">
+              <span><i class="fas fa-envelope"></i></span>
+              <span> quizverse@hcmut.edu.vn</span>
+            </div>
+            <div class="item-hl p-2">
+              <span><i class="fas fa-phone"></i></span>
+              <span> 028 01642284289</span>
+            </div>
+            <div class="item-hl p-2">
+              <span><i class="far fa-compass"></i></span>
+              <span> 268 Ly Thuong Kiet, District 10, Ho Chi Minh City, Viet Nam</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 ml-auto text-center">
+          <div class="d-flex flex-column row-hl">
+            <div class="item-hl">
+              <img src="img/quizverse-white.png" width="110" height="110" alt="">
+            </div>
+            <div class="item-hl p-2">
+              <p class="text-light">Copyright &copy; 2019 QuizVerse designed by Nhan and Diep</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    $(document).ready(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+  <script>
+    function changedate() {
+      var icon = document.getElementById("date-icon");
+      if (icon.className.match("up")) {
+        icon.className = "fas fa-caret-down";
+      } else {
+        icon.className = "fas fa-caret-up";
+      }
+    }
+
+    function changelevel() {
+      var icon = document.getElementById("level-icon");
+      if (icon.className.match("up")) {
+        icon.className = "fas fa-caret-down";
+      } else {
+        icon.className = "fas fa-caret-up";
+      }
+    }
+  </script>
+  <script src="https://kit.fontawesome.com/b0724393dc.js" crossorigin="anonymous"></script>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/navbar-fixed.js"></script>
+</body>
+
+</html>

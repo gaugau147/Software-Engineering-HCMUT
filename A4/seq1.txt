@@ -1,0 +1,33 @@
+title Search Room
+
+participantspacing equal
+actor User
+boundary SearchRoomView
+boundary RoomListView
+boundary RoomView
+control RoomListController
+control BookRoomController
+entity Room
+
+activate User
+User->SearchRoomView: select "Search"
+activate SearchRoomView
+SearchRoomView->RoomListController: get_room_list(buildingId, date, roomId)
+activate RoomListController
+RoomListController->Room: get_room(buidingId, roomId)
+activate Room 
+Room-->RoomListController: roomId
+deactivate Room
+RoomListController->RoomListView: displayRList()
+deactivate RoomListController
+activate RoomListView
+User->RoomListView: select Room
+RoomListView->BookRoomController: get_room_schedule(date, roomId)
+activate BookRoomController
+BookRoomController->Room: get_schedule(date)
+activate Room
+Room-->BookRoomController: roomSchedule
+deactivate Room
+BookRoomController->RoomView:displayRoom()
+deactivate BookRoomController
+activate RoomView

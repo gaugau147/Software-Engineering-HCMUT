@@ -1,0 +1,23 @@
+title Cancel Booking
+
+actor OfficeUser
+boundary BookingView
+boundary BookRoomController
+entity Room
+entity RoomBooking
+
+
+activate OfficeUser
+activate BookingView
+OfficeUser->BookingView: select "Cancel"
+BookingView->BookRoomController: update_room_schedule(date, roomId, schedule)
+activate BookRoomController
+BookRoomController->Room: setStatus(time)
+activate Room
+Room-->BookRoomController: True/False
+deactivate Room
+BookRoomController->RoomBooking: delete RoomBooking()
+activate RoomBooking
+deactivateafter RoomBooking
+BookRoomController->BookingView: displayNoti(string)
+deactivate BookRoomController

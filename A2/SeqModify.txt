@@ -1,0 +1,95 @@
+title Modify Booking
+
+actor User
+activate User
+boundary HomePage
+boundary ManageBookingPage
+boundary BookingPage
+boundary SearchRoom
+participant UserSystem
+participant ROMS
+participant Database
+participant EmailSystem
+
+User->HomePage: select "Manage Booking"
+activate HomePage
+
+HomePage->UserSystem: get bookings
+deactivate HomePage
+activate UserSystem
+UserSystem->ROMS: request data
+activate ROMS
+ROMS->Database: get data
+activate Database
+ROMS<--Database: return data
+deactivate Database
+UserSystem<--ROMS: return data
+deactivate ROMS
+ManageBookingPage<--UserSystem: display ManageBookingPage
+deactivate UserSystem
+
+activate ManageBookingPage
+
+opt fill in filter
+	User->ManageBookingPage: enter filter
+    ManageBookingPage->ManageBookingPage: show filter result
+    activate ManageBookingPage
+    deactivateafter ManageBookingPage
+end
+
+
+User->ManageBookingPage: select Room Booking
+ManageBookingPage->BookingPage: display ManageBookingPage
+deactivate ManageBookingPage
+activate BookingPage
+
+User->BookingPage: Select "Modify"
+
+BookingPage->SearchRoom: open SearchPage
+deactivate BookingPage
+activate SearchRoom
+User->SearchRoom: Enter search features
+SearchRoom->ROMS: request room list
+activate ROMS
+ROMS->Database: get data
+activate Database
+ROMS<--Database: return data
+deactivate Database
+SearchRoom<--ROMS: return room list
+deactivate ROMS
+User<--SearchRoom: room list
+opt Room available
+  User->SearchRoom: select room
+  SearchRoom->SearchRoom: pop-up room
+  activate SearchRoom
+  opt time available
+      User->SearchRoom: select time
+      User->SearchRoom: confirm
+      SearchRoom->ROMS: update_room_schedule (room_id, date, Schedule)
+      deactivate SearchRoom
+      activate ROMS
+      ROMS->Database: get data
+      activate Database
+      ROMS<--Database: data
+      deactivate Database
+      alt modify success
+        ROMS->EmailSystem: sendEmail()
+        activate EmailSystem
+        ROMS<--EmailSystem: success
+        deactivate EmailSystem
+      	SearchRoom<--ROMS: modify success
+      	User<--SearchRoom: modify success
+      else 
+      	SearchRoom<--ROMS: modify failed
+      	deactivate ROMS
+      	User<--SearchRoom: modify failed
+      end
+    end
+    User->SearchRoom: back to booking page
+    BookingPage<--SearchRoom: open BookingPage
+    deactivate SearchRoom
+    activate BookingPage
+    
+end
+
+

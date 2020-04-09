@@ -1,0 +1,65 @@
+title Modify Booking
+
+actor User
+activate User
+boundary HomePage
+boundary ManageBookingPage
+boundary BookingPage
+participant UserSystem
+participant ROMS
+participant Database
+participant EmailSystem
+
+User->HomePage: select "Manage Booking"
+activate HomePage
+
+HomePage->UserSystem: get bookings
+deactivate HomePage
+activate UserSystem
+UserSystem->ROMS: request data
+activate ROMS
+ROMS->Database: get data
+activate Database
+ROMS<--Database: return data
+deactivate Database
+UserSystem<--ROMS: return data
+deactivate ROMS
+ManageBookingPage<--UserSystem: display ManageBookingPage
+deactivate UserSystem
+
+activate ManageBookingPage
+
+opt fill in filter
+	User->ManageBookingPage: enter filter
+    ManageBookingPage->ManageBookingPage: show filter result
+    activate ManageBookingPage
+    deactivateafter ManageBookingPage
+end
+
+
+User->ManageBookingPage: select Room Booking
+ManageBookingPage->BookingPage: display ManageBookingPage
+deactivate ManageBookingPage
+activate BookingPage
+
+User->BookingPage: Select "Cancel"
+BookingPage->ROMS: update_room_schedule (room_id, date, Schedule)
+activate ROMS
+ROMS->Database: get data
+activate Database
+ROMS<--Database: return data
+deactivate Database
+ROMS->EmailSystem: sendEmail()
+activate EmailSystem
+ROMS<--EmailSystem: success
+deactivate EmailSystem
+BookingPage<--ROMS: modify success
+User<--BookingPage: modify success
+User->BookingPage: back to ManageBookingPage
+ManageBookingPage<--BookingPage: open ManageBookingPage
+deactivate BookingPage
+activate ManageBookingPage
+    
+
+
+

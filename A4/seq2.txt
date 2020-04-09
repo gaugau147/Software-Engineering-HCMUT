@@ -1,0 +1,47 @@
+title Book Room
+
+
+actor OfficeUser
+boundary RoomBookingView
+control BookRoomController
+entity Room
+entity RoomBooking
+entity Lecturer
+
+
+activate OfficeUser
+OfficeUser->RoomBookingView: select "Book"
+activate RoomBookingView
+RoomBookingView->Lecturer: getCourse(id)
+activate Lecturer
+Lecturer-->RoomBookingView: List<Course>
+deactivate Lecturer
+loop
+OfficeUser->RoomBookingView: select Time
+RoomBookingView->BookRoomController: checkValidTime(time, lecturerId)
+activate BookRoomController
+BookRoomController->Lecturer: getTimeTable(id)
+activate Lecturer
+Lecturer-->BookRoomController: TimeTable
+deactivate Lecturer
+BookRoomController-->RoomBookingView:displayNot(String)
+deactivate BookRoomController
+end
+opt TimeTable not conlict
+
+OfficeUser->RoomBookingView: select Course
+OfficeUser->RoomBookingView: enter Info
+OfficeUser->RoomBookingView: select "Complete"
+RoomBookingView->BookRoomController: update_room_schedule(date, roomId, schedule)
+activate BookRoomController
+BookRoomController->Room: set_status(time)
+activate Room
+Room-->BookRoomController: True/False
+deactivate Room
+BookRoomController->RoomBooking: new RoomBooking()
+activate RoomBooking
+deactivateafter RoomBooking
+BookRoomController->RoomBookingView: displayNoti(String)
+deactivate BookRoomController
+
+end

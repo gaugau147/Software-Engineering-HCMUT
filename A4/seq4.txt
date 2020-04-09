@@ -1,0 +1,39 @@
+title Modify Room
+
+actor OfficeUser
+boundary BookingView
+control BookRoomController
+entity Room
+entity RoomBooking
+entity Lecturer
+
+activate OfficeUser
+activate BookingView
+OfficeUser->BookingView: Select "Modify"
+opt Change Time
+OfficeUser->BookingView: select Time
+BookingView->BookRoomController: checkValidTime(time, lecturerId)
+activate BookRoomController
+BookRoomController->Lecturer: getTimeTable(id)
+activate Lecturer
+Lecturer-->BookRoomController: TimeTable
+deactivate Lecturer
+BookRoomController->BookingView:displayNoti(String)
+deactivate BookRoomController
+end
+opt Confirm Change
+OfficeUser->BookingView: Select "Confirm"
+BookingView->BookRoomController:update_room_schedule(date, roomId, schedule)
+activate BookRoomController
+BookRoomController->Room: set_status(time)
+activate Room
+Room-->BookRoomController: True/False
+deactivate Room
+BookRoomController->RoomBooking: updateTime(datetime)
+activate RoomBooking
+RoomBooking-->BookRoomController:True/False
+deactivate RoomBooking
+BookRoomController->BookingView: displayNoti(String)
+deactivate BookRoomController
+
+end
